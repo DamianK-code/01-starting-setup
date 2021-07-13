@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import Expenses from "./components/Expenses/Expenses";
-import NewExpense from "./components/NewExpense/NewExpense";
+import React, {useState} from "react";
+import HandsTemplateConfigurator from "./components/Expenses/HandsTemplateConfigurator";
 
-const DUMMY_EXPENSES = [
+const DUMMY_HANDS_TEMPLATE = [
   {
     id: "e1",
     title: "Toilet Paper",
@@ -25,17 +24,15 @@ const DUMMY_EXPENSES = [
 ];
 
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const [savedTemplates, setHands] = useState(DUMMY_HANDS_TEMPLATE);
 
-  const addExpenseHandler = (expense) => {
-    setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses];
-    });
+  const saveHandsTemplate = (expense) => {
+    console.log('Template saved.')
   };
+
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
+      <HandsTemplateConfigurator items={savedTemplates} />
     </div>
   );
 };

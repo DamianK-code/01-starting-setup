@@ -1,0 +1,73 @@
+.finger {
+    width: 60px;
+    background-color: #FFEBC8FF;
+    border-radius: 5% 5% 45% 40%;
+    position: absolute;
+    border: 1px #ccc solid;
+}
+
+.maly-right {
+    height: 200px;
+    transform: translateX(240px) /*rotate(-45deg)*/;
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+.serdeczny-right {
+    height: 300px;
+    transform: translateX(190px)/* rotate(-25deg)*/;
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+.srodkowy-right {
+    height: 315px;
+    transform: translateX(140px) /*rotate(-5deg)*/;
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+.wskazujacy-right {
+    height: 290px;
+    transform: translateX(90px) /*rotate(15deg)*/;
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+.kciuk-right {
+    height: 100px;
+    transform: translateX(40px) rotate(1deg);
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+
+.maly-left {
+    transform: rotate(45deg);
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+.serdeczny-left {
+    transform: translateX(40px) rotate(25deg);
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+.srodkowy-left {
+    transform: translateX(84px) rotate(5deg);
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+.wskazujacy-left {
+    transform: translateX(84px) rotate(-5deg);
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+.kciuk-left {
+    transform: translateX(84px) rotate(-5deg);
+    /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
+}
+
+.nail{
+    background-color: red;
+    height: 60px;
+    width: 45px;
+    margin: 6px;
+    position: absolute;
+    bottom: -9px;
+    border-radius: 3% 3% 50% 60%;
+}

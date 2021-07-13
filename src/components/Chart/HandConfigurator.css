@@ -1,9 +1,16 @@
-.chart {
+.hand {
     padding: 1rem;
-    border-radius: 12px;
+    border-radius: 6px;
     background-color: #f8dfff;
     text-align: center;
-    display: flex;
     justify-content: space-around;
     height: 10rem;
-  }
+}
+
+.left {
+    background-color: red;
+}
+
+.right {
+    background-color: green;
+}
