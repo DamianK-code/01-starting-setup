@@ -35,39 +35,44 @@
     transform: translateX(40px) rotate(1deg);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
-
+/*------------------------------------------------*/
 
 .maly-left {
-    transform: rotate(45deg);
+    height: 200px;
+    transform: translateX(40px);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
 .serdeczny-left {
-    transform: translateX(40px) rotate(25deg);
+    height: 300px;
+    transform: translateX(90px);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
 .srodkowy-left {
-    transform: translateX(84px) rotate(5deg);
+    height: 315px;
+    transform: translateX(140px);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
 .wskazujacy-left {
-    transform: translateX(84px) rotate(-5deg);
+    height: 290px;
+    transform: translateX(190px);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
 .kciuk-left {
-    transform: translateX(84px) rotate(-5deg);
+    height: 100px;
+    transform: translateX(240px) rotate(-1deg);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
 .nail{
     background-color: red;
     height: 60px;
-    width: 45px;
+    width: 40px;
     margin: 6px;
     position: absolute;
-    bottom: -9px;
-    border-radius: 3% 3% 50% 60%;
+    bottom: -15px;
+    border-radius: 40% 40% 10% 10%;
 }

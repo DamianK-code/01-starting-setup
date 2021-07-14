@@ -4,11 +4,11 @@
     background-color: #f8dfff;
     text-align: center;
     justify-content: space-around;
-    height: 10rem;
+    height: 25rem;
 }
 
 .left {
-    background-color: red;
+    background-color: #3b9793;
 }
 
 .right {
