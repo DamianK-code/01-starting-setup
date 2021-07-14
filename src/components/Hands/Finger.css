@@ -69,7 +69,6 @@
 }
 
 .nail{
-    background-color: red;
     height: 60px;
     width: 35px;
     margin: 10px;
@@ -78,7 +77,6 @@
     border-radius: 40% 40% 10% 10%;
 }
 .nail-kciuk{
-    background-color: red;
     height: 60px;
     width: 40px;
     margin: 6px;

@@ -13,6 +13,7 @@ const HandConfigurator = (props) => {
                     color={finger.color}
                     name={finger.label}
                     hand={props.hand}
+                    clickHandler={props.selectNail}
                 />
             ))}
         </div>
