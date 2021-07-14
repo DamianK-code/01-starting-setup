@@ -17,4 +17,5 @@ const Finger = (props) => {
         </div>
     );
 };
+
 export default Finger;
