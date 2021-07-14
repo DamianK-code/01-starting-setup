@@ -1,5 +1,5 @@
 import React from "react";
-import HandConfigurator from "../Chart/HandConfigurator";
+import HandConfigurator from "../Hands/HandConfigurator";
 import "./HandsConfigurator.css";
 
 const HandsConfigurator = props => {

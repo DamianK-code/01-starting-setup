@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import HandsTemplateConfigurator from "./components/Expenses/HandsTemplateConfigurator";
+import HandsTemplateConfigurator from "./components/HandsConfigurator/HandsTemplateConfigurator";
 
 const DUMMY_HANDS_TEMPLATE = [
   {
