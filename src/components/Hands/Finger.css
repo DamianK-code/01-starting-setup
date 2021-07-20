@@ -6,62 +6,62 @@
     border: 1px #ccc solid;
 }
 
-.maly-right {
+.LITTLE_FINGER-RIGHT {
     height: 200px;
     transform: translateX(242px) /*rotate(-45deg)*/;
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
-.serdeczny-right {
+.RING_FINGER-RIGHT {
     height: 300px;
     transform: translateX(190px)/* rotate(-25deg)*/;
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
-.srodkowy-right {
+.MIDDLE_FINGER-RIGHT {
     height: 315px;
     transform: translateX(140px) /*rotate(-5deg)*/;
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
-.wskazujacy-right {
+.POINTING_FINGER-RIGHT {
     height: 290px;
     transform: translateX(90px) /*rotate(15deg)*/;
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
-.kciuk-right {
+.THUMB-RIGHT {
     height: 100px;
     transform: translateX(35px) rotate(1deg);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 /*------------------------------------------------*/
 
-.maly-left {
+.LITTLE_FINGER-LEFT {
     height: 200px;
     transform: translateX(40px);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
-.serdeczny-left {
+.RING_FINGER-LEFT {
     height: 300px;
     transform: translateX(90px);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
-.srodkowy-left {
+.MIDDLE_FINGER-LEFT {
     height: 315px;
     transform: translateX(140px);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
-.wskazujacy-left {
+.POINTING_FINGER-LEFT {
     height: 290px;
     transform: translateX(190px);
     /*transform: rotate(45deg); !* Equal to rotateZ(45deg) *!*/
 }
 
-.kciuk-left {
+.THUMB-LEFT {
     height: 100px;
     transform: translateX(245px) rotate(-1deg);
 

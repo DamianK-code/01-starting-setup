@@ -5,28 +5,55 @@ import "./HandsTemplateConfigurator.css";
 import NailConfigurator from "../Hands/NailConfigurator";
 
 function HandsTemplateConfigurator(props) {
-    const initialFingerConfigurations = [
-        {
+    const initialFingerConfigurations = {
+        id: null,
+        name: null,
+        right: {
+            id: null,
+            handSide: 'RIGHT',
             fingers: [
-                {label: "maly", color: '#f00'},
-                {label: "serdeczny", color: '#f00'},
-                {label: "srodkowy", color: '#f00'},
-                {label: "wskazujacy", color: '#f00'},
-                {label: "kciuk", color: '#f00'},
-            ],
-            hand: 'left'
+                {id: null, label: "LITTLE_FINGER", color: '#f00'},
+                {id: null, label: "RING_FINGER", color: '#f00'},
+                {id: null, label: "MIDDLE_FINGER", color: '#f00'},
+                {id: null, label: "POINTING_FINGER", color: '#f00'},
+                {id: null, label: "THUMB", color: '#f00'},
+            ]
         },
-        {
+        left: {
+            id: null,
+            handSide: 'LEFT',
             fingers: [
-                {label: "maly", color: '#f00'},
-                {label: "serdeczny", color: '#f00'},
-                {label: "srodkowy", color: '#f00'},
-                {label: "wskazujacy", color: '#f00'},
-                {label: "kciuk", color: '#f00'},
-            ],
-            hand: 'right'
-        },
-    ];
+                {id: null, label: "LITTLE_FINGER", color: '#f00'},
+                {id: null, label: "RING_FINGER", color: '#f00'},
+                {id: null, label: "MIDDLE_FINGER", color: '#f00'},
+                {id: null, label: "POINTING_FINGER", color: '#f00'},
+                {id: null, label: "THUMB", color: '#f00'},
+            ]
+        }
+    };
+
+    // const initialFingerConfigurations = [
+    //     {
+    //         fingers: [
+    //             {label: "maly", color: '#f00'},
+    //             {label: "serdeczny", color: '#f00'},
+    //             {label: "srodkowy", color: '#f00'},
+    //             {label: "wskazujacy", color: '#f00'},
+    //             {label: "kciuk", color: '#f00'},
+    //         ],
+    //         hand: 'left'
+    //     },
+    //     {
+    //         fingers: [
+    //             {label: "maly", color: '#f00'},
+    //             {label: "serdeczny", color: '#f00'},
+    //             {label: "srodkowy", color: '#f00'},
+    //             {label: "wskazujacy", color: '#f00'},
+    //             {label: "kciuk", color: '#f00'},
+    //         ],
+    //         hand: 'right'
+    //     },
+    // ];
     const [fingerConfigurations, setFingers] = useState(initialFingerConfigurations);
     const [selectedNail, setNail] = useState(null);
     const [currentColor, setCurrentColor] = useState(null);
@@ -47,18 +74,15 @@ function HandsTemplateConfigurator(props) {
         const finger = arr[1];
         setCurrentColor(color);
 
-        console.log("hand : " + hand + " finger: " + finger);
-        for (var i =0; i< fingerConfigurations.length ; i++){
-            var singleHand = fingerConfigurations[i];
-            if(singleHand.hand === hand){
-                for (var j =0; j< singleHand.fingers.length ; j++){
-                    var singleFinger = singleHand.fingers[j];
-                    if(singleFinger.label === finger){
-                        singleFinger.color = color;
-                    }
-                }
+        var singleHand = fingerConfigurations[hand.toLowerCase()]
+        for (var j = 0; j < singleHand.fingers.length; j++) {
+            var singleFinger = singleHand.fingers[j];
+            console.log(singleFinger)
+            if (singleFinger.label === finger) {
+                singleFinger.color = color;
             }
         }
+
         setFingers(fingerConfigurations);
     }
 
