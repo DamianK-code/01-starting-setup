@@ -1,0 +1,26 @@
+.single-creation {
+    display: flex;
+    background-color: aliceblue;
+    width: 100%;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.single-creation-header {
+    border-radius: 2px;
+    display: flex;
+    width: 100%;
+    background-color: #5fb2ac;
+}
+
+.single-creation-header-column {
+    width: 50%;
+}
+
+.single-creation:hover {
+    background-color: #c5e0f8;
+}
+
+.single-creation-column {
+    width: 50%;
+}

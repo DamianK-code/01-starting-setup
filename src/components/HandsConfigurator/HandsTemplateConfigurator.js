@@ -1,62 +1,44 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Card from "../UI/Card";
 import HandsConfigurator from "./HandsConfigurator";
 import "./HandsTemplateConfigurator.css";
 import NailConfigurator from "../Hands/NailConfigurator";
+import instance from "../../axios";
+import AvailableSavedCreations from "../Hands/AvailableSavedCreations";
 
 function HandsTemplateConfigurator(props) {
-    const initialFingerConfigurations = {
-        id: null,
-        name: null,
-        right: {
-            id: null,
-            handSide: 'RIGHT',
-            fingers: [
-                {id: null, label: "LITTLE_FINGER", color: '#f00'},
-                {id: null, label: "RING_FINGER", color: '#f00'},
-                {id: null, label: "MIDDLE_FINGER", color: '#f00'},
-                {id: null, label: "POINTING_FINGER", color: '#f00'},
-                {id: null, label: "THUMB", color: '#f00'},
-            ]
-        },
-        left: {
-            id: null,
-            handSide: 'LEFT',
-            fingers: [
-                {id: null, label: "LITTLE_FINGER", color: '#f00'},
-                {id: null, label: "RING_FINGER", color: '#f00'},
-                {id: null, label: "MIDDLE_FINGER", color: '#f00'},
-                {id: null, label: "POINTING_FINGER", color: '#f00'},
-                {id: null, label: "THUMB", color: '#f00'},
-            ]
-        }
-    };
+    const initialFingerConfigurations = null;
+    const allFingerConfigurations = [];
 
-    // const initialFingerConfigurations = [
-    //     {
-    //         fingers: [
-    //             {label: "maly", color: '#f00'},
-    //             {label: "serdeczny", color: '#f00'},
-    //             {label: "srodkowy", color: '#f00'},
-    //             {label: "wskazujacy", color: '#f00'},
-    //             {label: "kciuk", color: '#f00'},
-    //         ],
-    //         hand: 'left'
-    //     },
-    //     {
-    //         fingers: [
-    //             {label: "maly", color: '#f00'},
-    //             {label: "serdeczny", color: '#f00'},
-    //             {label: "srodkowy", color: '#f00'},
-    //             {label: "wskazujacy", color: '#f00'},
-    //             {label: "kciuk", color: '#f00'},
-    //         ],
-    //         hand: 'right'
-    //     },
-    // ];
+    const [allAvailableFingerConfigurations, setConfigurations] = useState(allFingerConfigurations);
     const [fingerConfigurations, setFingers] = useState(initialFingerConfigurations);
     const [selectedNail, setNail] = useState(null);
     const [currentColor, setCurrentColor] = useState(null);
+
+    useEffect(() => {
+        instance
+            .get('http://localhost:8080/api/creation')
+            .then(response => {
+                console.log(response.data);
+                setConfigurations(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+    const onChooseDifferent = (identifier) => {
+        console.log("Clicked different: "+ identifier);
+        instance
+            .get('http://localhost:8080/api/creation/'+identifier)
+            .then(response => {
+                console.log(response.data);
+                setFingers(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
     const saveNailHandler = (nailData) => {
         console.log(nailData);
@@ -93,10 +75,13 @@ function HandsTemplateConfigurator(props) {
     return (
         <div>
             <Card className="configurator">
-                <HandsConfigurator
-                    initialFingers={fingerConfigurations}
-                    selectNail={handleSelectNail}
-                />
+                {
+                    fingerConfigurations != null ?
+                        (<HandsConfigurator
+                            initialFingers={fingerConfigurations}
+                            selectNail={handleSelectNail}
+                        />) : (<div/>)
+                }
                 {
                     selectedNail != null ?
                         (<NailConfigurator
@@ -106,6 +91,13 @@ function HandsTemplateConfigurator(props) {
                         />) : (<div/>)
                 }
             </Card>
+            <Card className="configurator">
+                <AvailableSavedCreations
+                    creations={allAvailableFingerConfigurations}
+                    onChangedCreation={onChooseDifferent}
+                />
+            </Card>
+
         </div>
     );
 }
