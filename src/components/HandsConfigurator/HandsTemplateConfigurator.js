@@ -41,16 +41,33 @@ function HandsTemplateConfigurator(props) {
             });
     }
 
+    function saveHand(hand) {
+        instance
+            .post('http://localhost:8080/api/hand', hand)
+            .then(response => {
+                hand.fingers.forEach((finger) =>{
+                    saveFinger(finger);
+                })
+            }).catch((error) => {console.log(error);});
+    }
+
+    function saveFinger(finger) {
+        instance
+            .post('http://localhost:8080/api/finger', finger)
+            .then(response => {
+                console.log(response.data);
+            }).catch((error) => {console.log(error);});
+    }
+
     const saveConfigurationOnServer = (name) => {
         fingerConfigurations.name = name;
         instance
             .post('http://localhost:8080/api/creation', fingerConfigurations)
             .then(response => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                saveHand(fingerConfigurations.right);
+                saveHand(fingerConfigurations.left);
+                
+            }).catch((error) => {console.log(error);});
     };
 
     const saveNailHandler = (nailData) => {
