@@ -5,6 +5,7 @@ import "./HandsTemplateConfigurator.css";
 import NailConfigurator from "../Hands/NailConfigurator";
 import instance from "../../axios";
 import AvailableSavedCreations from "../Hands/AvailableSavedCreations";
+import SavedCreationForm from "../Hands/SavedCreationForm";
 
 function HandsTemplateConfigurator(props) {
     const initialFingerConfigurations = null;
@@ -28,9 +29,9 @@ function HandsTemplateConfigurator(props) {
     }, []);
 
     const onChooseDifferent = (identifier) => {
-        console.log("Clicked different: "+ identifier);
+        console.log("Clicked different: " + identifier);
         instance
-            .get('http://localhost:8080/api/creation/'+identifier)
+            .get('http://localhost:8080/api/creation/' + identifier)
             .then(response => {
                 console.log(response.data);
                 setFingers(response.data);
@@ -39,6 +40,18 @@ function HandsTemplateConfigurator(props) {
                 console.log(error);
             });
     }
+
+    const saveConfigurationOnServer = (name) => {
+        fingerConfigurations.name = name;
+        instance
+            .post('http://localhost:8080/api/creation', fingerConfigurations)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     const saveNailHandler = (nailData) => {
         console.log(nailData);
@@ -91,7 +104,16 @@ function HandsTemplateConfigurator(props) {
                         />) : (<div/>)
                 }
             </Card>
-            <Card className="configurator">
+            {
+                fingerConfigurations != null ?
+                    (<Card className="configurator-save-panel">
+                        <SavedCreationForm
+                            creation={fingerConfigurations}
+                            onSaveConfiguration={saveConfigurationOnServer}
+                        />
+                    </Card>) : (<div/>)
+            }
+            <Card className="configurator-save-panel">
                 <AvailableSavedCreations
                     creations={allAvailableFingerConfigurations}
                     onChangedCreation={onChooseDifferent}
