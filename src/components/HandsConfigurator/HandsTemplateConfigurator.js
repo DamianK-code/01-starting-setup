@@ -8,6 +8,32 @@ import AvailableSavedCreations from "../Hands/AvailableSavedCreations";
 import SavedCreationForm from "../Hands/SavedCreationForm";
 
 function HandsTemplateConfigurator(props) {
+    const EMPTY_CONFIGURATION = {
+        identifier: null,
+        name: 'new',
+        right: {
+            identifier: null,
+            handSide: 'RIGHT',
+            fingers: [
+                {identifier: null, label: "THUMB", color: '#f00'},
+                {identifier: null, label: "POINTING_FINGER", color: '#f00'},
+                {identifier: null, label: "MIDDLE_FINGER", color: '#f00'},
+                {identifier: null, label: "RING_FINGER", color: '#f00'},
+                {identifier: null, label: "LITTLE_FINGER", color: '#f00'},
+            ]
+        },
+        left: {
+            identifier: null,
+            handSide: 'LEFT',
+            fingers: [
+                {identifier: null, label: "THUMB", color: '#f00'},
+                {identifier: null, label: "POINTING_FINGER", color: '#f00'},
+                {identifier: null, label: "MIDDLE_FINGER", color: '#f00'},
+                {identifier: null, label: "RING_FINGER", color: '#f00'},
+                {identifier: null, label: "LITTLE_FINGER", color: '#f00'},
+            ]
+        }
+    };
     const initialFingerConfigurations = null;
     const allFingerConfigurations = [];
 
@@ -17,6 +43,10 @@ function HandsTemplateConfigurator(props) {
     const [currentColor, setCurrentColor] = useState(null);
 
     useEffect(() => {
+        loadConfigurations();
+    }, []);
+
+    const loadConfigurations = () => {
         instance
             .get('http://localhost:8080/api/creation')
             .then(response => {
@@ -26,7 +56,7 @@ function HandsTemplateConfigurator(props) {
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }
 
     const onChooseDifferent = (identifier) => {
         console.log("Clicked different: " + identifier);
@@ -51,7 +81,7 @@ function HandsTemplateConfigurator(props) {
             }).catch((error) => {console.log(error);});
     }
 
-    function saveFinger(finger) {
+    const saveFinger = (finger) => {
         instance
             .post('http://localhost:8080/api/finger', finger)
             .then(response => {
@@ -64,9 +94,10 @@ function HandsTemplateConfigurator(props) {
         instance
             .post('http://localhost:8080/api/creation', fingerConfigurations)
             .then(response => {
+                setFingers(response.data);
                 saveHand(fingerConfigurations.right);
                 saveHand(fingerConfigurations.left);
-                
+                loadConfigurations();
             }).catch((error) => {console.log(error);});
     };
 
@@ -100,6 +131,10 @@ function HandsTemplateConfigurator(props) {
 
     const getCurrentColor = () => {
         return currentColor;
+    }
+
+    const newConfiguration = () => {
+        setFingers(EMPTY_CONFIGURATION);
     }
 
     return (
@@ -136,7 +171,9 @@ function HandsTemplateConfigurator(props) {
                     onChangedCreation={onChooseDifferent}
                 />
             </Card>
-
+            <Card className="configurator-save-panel">
+                <button onClick={newConfiguration} className="my-new-configuration-button">Create new, empty configuration</button>
+            </Card>
         </div>
     );
 }
