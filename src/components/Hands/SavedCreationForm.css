@@ -1,9 +1,9 @@
-.save-configuration-form{
+.save-configuration-form {
     display: flex;
     flex-direction: column;
 }
 
-.save-configuration-form-row{
+.save-configuration-form-row {
     display: flex;
     flex-direction: row;
     border-radius: 3px;
@@ -11,22 +11,26 @@
     padding: 0 10px;
     background-color: #c5e0f8;
 }
-.save-configuration-form-label{
+
+.save-configuration-form-label {
     width: 50%;
     border-radius: 5px;
 }
-.save-configuration-form-input{
+
+.save-configuration-form-input {
     width: 50%;
     padding: 2px;
     border-radius: 5px;
 }
-.my-input{
+
+.my-input {
     height: 100%;
     width: 100%;
     padding: 2px !important;
     margin: 0;
 }
-.my-button{
+
+.my-button {
     height: 100%;
     width: 100%;
     padding: 2px !important;

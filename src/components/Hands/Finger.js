@@ -9,7 +9,7 @@ const Finger = (props) => {
 
     return (
         <div className={'finger ' + props.name + '-' + props.hand}>
-            <div className={'nail'} style={{backgroundColor : props.color}}
+            <div className={'nail'} style={{backgroundColor: props.color}}
                  onClick={() => {
                      props.clickHandler(props.hand, props.name, colorHandler);
                  }}

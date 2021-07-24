@@ -16,7 +16,7 @@ const SavedCreationForm = (props) => {
         //     setEditedCreationName(props.creation.name);
         // }, [props.creation.name]);
 
-        const changeName = (event) =>{
+        const changeName = (event) => {
             console.log(event.target.value);
             setEditedCreationName(event.target.value);
         }
@@ -33,13 +33,14 @@ const SavedCreationForm = (props) => {
                     <div className="save-configuration-form-label">Name</div>
                     <div className="save-configuration-form-input">
                         <input className="my-input" type="text" defaultValue={creation.name}
-                        onChange={changeName}/>
+                               onChange={changeName}/>
                     </div>
                 </div>
                 <div className="save-configuration-form-row">
                     <button className="my-button" onClick={() => {
                         props.onSaveConfiguration(editedCreationName);
-                    }} type={"submit"}>Prześlij</button>
+                    }} type={"submit"}>Prześlij
+                    </button>
                 </div>
             </div>
         );

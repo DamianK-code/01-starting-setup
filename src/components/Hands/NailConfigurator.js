@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 import "./NailConfigurator.css";
-import {SketchPicker, SwatchesPicker} from "react-color";
+import {PhotoshopPicker} from "react-color";
 
 const NailConfigurator = (props) => {
     const availableColors = ['#fff', '#f00', '#0f0', '#00f', '#000'];
@@ -16,8 +16,8 @@ const NailConfigurator = (props) => {
     return (
         <div className="nail-configurator-panel">
             <label>Color</label>
-            <SwatchesPicker onChange={colorChengeHandler} hex={enteredColor}
-            height="368px"/>
+            <PhotoshopPicker onChange={colorChengeHandler} hex={enteredColor}
+                             height="368px"/>
         </div>
     );
 };
