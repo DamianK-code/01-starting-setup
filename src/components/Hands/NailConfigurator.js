@@ -1,23 +1,31 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import "./NailConfigurator.css";
-import {PhotoshopPicker} from "react-color";
+import {PhotoshopPicker, SketchPicker} from "react-color";
 
 const NailConfigurator = (props) => {
-    const availableColors = ['#fff', '#f00', '#0f0', '#00f', '#000'];
     const [enteredColor, setColor] = useState("");
+    const [color, setColors] = useState();
 
-    const colorChengeHandler = (color, event) => {
-        setColor(color.hex);
-        props.changeColorHandler(color.hex, props.nail);
-    };
-
+    useEffect(() => {
+        console.log(props.nailColor);
+        setColors(props.nailColor);
+    }, [props.nailColor])
     // npm install
     return (
         <div className="nail-configurator-panel">
             <label>Color</label>
-            <PhotoshopPicker onChange={colorChengeHandler} hex={enteredColor}
-                             height="368px"/>
+            <PhotoshopPicker
+                color={color}
+                currentColor={color}
+                onAccept={() => {
+                    setColor(color);
+                    props.changeColorHandler(color, props.nail);
+                }}
+                onChangeComplete={color => {
+                    setColors(color.hex);
+                }}
+            />
         </div>
     );
 };

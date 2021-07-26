@@ -40,6 +40,7 @@ function HandsTemplateConfigurator(props) {
     const [allAvailableFingerConfigurations, setConfigurations] = useState(allFingerConfigurations);
     const [fingerConfigurations, setFingers] = useState(initialFingerConfigurations);
     const [selectedNail, setNail] = useState(null);
+    const [selectedNailColor, setNailColor] = useState(null);
     const [currentColor, setCurrentColor] = useState(null);
 
     useEffect(() => {
@@ -105,8 +106,9 @@ function HandsTemplateConfigurator(props) {
         console.log(nailData);
     };
 
-    const handleSelectNail = (hand, finger) => {
+    const handleSelectNail = (hand, finger, color) => {
         setNail(hand + ' ' + finger);
+        setNailColor(color);
     }
 
     const handleChangeColor = (color, handfinger) => {
@@ -151,6 +153,7 @@ function HandsTemplateConfigurator(props) {
                     selectedNail != null ?
                         (<NailConfigurator
                             nail={selectedNail}
+                            nailColor={selectedNailColor}
                             saveHandler={saveNailHandler}
                             changeColorHandler={handleChangeColor}
                         />) : (<div/>)
